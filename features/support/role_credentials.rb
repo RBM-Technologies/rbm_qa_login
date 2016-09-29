@@ -10,7 +10,7 @@ module CredentialHelpers
     when 'District Manager'
       @username = ''
       @password = ''
-    when 'RBM Admin'
+    when 'RBM admin'
       @username = 'rbm_admin'
       @password = 'rbm_admin'
     when 'Real Estate'

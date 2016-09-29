@@ -2,8 +2,8 @@ Given(/^I have the credentials of (.+)$/) do |role|
   role_credentials(role)
 end
 
-Given(/^I have entered the login section$/) do
-  visit('/')
+Given(/^I am on the login page$/) do
+  visit('/view/login')
 end
 
 When(/^I enter my credentials$/) do
