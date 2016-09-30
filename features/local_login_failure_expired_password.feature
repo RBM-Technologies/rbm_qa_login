@@ -11,3 +11,4 @@ Scenario:
   When I enter a new password
   And I submit the reset password form
   Then login should succeed
+  And I should be redirected to my home page

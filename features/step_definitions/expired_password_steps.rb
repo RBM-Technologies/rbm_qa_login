@@ -29,4 +29,6 @@ end
 
 Then(/^I should be redirected to my home page$/) do
   expect(current_path).to match /\/locations/
+  click_link("Logoff #{@username}")
+  destroy_user(@username)
 end

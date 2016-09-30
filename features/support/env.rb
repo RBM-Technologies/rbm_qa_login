@@ -22,3 +22,4 @@ end
 Capybara.default_driver = :webkit
 Capybara.javascript_driver = :webkit
 Capybara.run_server = false
+Capybara.ignore_hidden_elements = false
