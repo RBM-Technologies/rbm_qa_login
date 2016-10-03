@@ -7,7 +7,6 @@ Given(/^I am a store manager with multiple locations$/) do
     'North Central',
     'TPR Chicago Southeast'
   )
-  save_and_open_page
   assign_location(
     @username,
     @password,
