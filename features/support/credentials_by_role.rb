@@ -5,8 +5,8 @@ module CredentialHelpers
   def role_credentials(role)
     case role
     when 'Administrator'
-      @username = ''
-      @password = ''
+      @username = 'client_admin'
+      @password = 'client_admin'
     when 'District Manager'
       @username = ''
       @password = ''

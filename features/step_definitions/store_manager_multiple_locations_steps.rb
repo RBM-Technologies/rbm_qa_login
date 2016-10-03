@@ -19,7 +19,7 @@ end
 Then(/^I will see a list of my locations$/) do
   expect(page).to have_content(@location)
   expect(page).to have_content(@location2)
-  expect(current_path).to match /\/locations/
+  expect(current_path).to match /\/locations$/
   click_link("Logoff #{@username}")
   destroy_user(@username)
 end
