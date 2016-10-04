@@ -8,6 +8,7 @@ class User
   end
 end
 
+
 module CredentialHelpers
   def credentials_for(role)
     case role
