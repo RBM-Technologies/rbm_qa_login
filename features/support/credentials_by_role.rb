@@ -7,35 +7,15 @@ class User
   end
 end
 
-
-
-
-
-
-@username = ''
-@password = ''
-
 module CredentialHelpers
   def credentials_by(role)
     case role
     when 'Administrator'
       User.new('client_admin_12345', 'test', 'ATT admin')
-    when 'District Manager'
-      @username = ''
-      @password = ''
     when 'RBM admin'
-      @username = 'rbm_admin'
-      @password = 'rbm_admin'
-    when 'Real Estate'
-      @username = ''
-      @password = ''
-    when 'Report/Read_Only'
-      @username = ''
-      @password = ''
-    when 'Report/Read_Only TPR Role'
-      @username = ''
-      @password = ''
+      User.new('rbm_admin', 'rbm_admin', 'RBM admin')
     when 'Store Manager'
+      User.new('test_store_manager_12345', 'test', 'store_manager')
       @username = 'test_store_manager_12345'
       @password = 'test'
     else
