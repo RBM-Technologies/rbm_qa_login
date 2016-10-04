@@ -8,15 +8,14 @@ require 'launchy'
 require 'pry'
 
 Capybara.configure do |config|
-  config.app_host = 'https://tmobile-vmm-qa.aws.rbmtechnologies.com'
+  config.app_host = 'https://att-vmm-qa.aws.rbmtechnologies.com'
 end
 
 Capybara::Webkit.configure do |config|
   config.allow_url("tmobile-vmm-qa.aws.rbmtechnologies.com")
-end
-
-Capybara::Webkit.configure do |config|
+  config.allow_url("att-vmm-qa.aws.rbmtechnologies.com")
   config.allow_url("www.google-analytics.com")
+  config.allow_url("https://tracker.totango.com/totango3.js")
 end
 
 Capybara.default_driver = :webkit

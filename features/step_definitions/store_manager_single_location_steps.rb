@@ -3,9 +3,10 @@ Given(/^I am a store manager with a single location$/) do
     'test_store_manager_single_loc',
     'test_store_manager_single_loc',
     'Store Manager',
-    '235',
-    'North Central',
-    'TPR Chicago Southeast'
+    '147437',
+    'Southeast',
+    'Gulf States',
+    'FL-Fort Walton Beach'
   )
 end
 

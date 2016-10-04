@@ -27,9 +27,18 @@ module UserHelpers
     fill_in('user_password', with: password)
     fill_in('user_password_confirmation', with: password)
     find(:css, "#user_role_ids_[value='#{value_for(role)}']").set(true)
+    save_and_open_page
+
+    # find(:xpath, "//*span[text()[contains(., 'Southeast')]]").click
+    # find(:xpath, "//*[@id="regions"]/fieldset/ul/li/span[contains(text(), 'Southeast')]").click
+    # find(:xpath, "//*span[contains(text(), 'Southeast')]").click
     districts.each do |district|
-      find(:xpath, "//*[text()[contains(., '#{district}')]]").click
+      find("span", text: "#{district}").click
+      save_and_open_page
     end
+    # districts.each do |district|
+    #   find('#regions').find("span", text: "#{district}").click
+    # end
     find(:css, "#user_location_ids_[value='#{value_for_location(location)}']").set(true)
     click_on('Create')
     click_on("Logoff #{@username}")

@@ -24,11 +24,11 @@ When(/^I submit the reset password form$/) do
 end
 
 Then(/^login should succeed$/) do
-  expect(page).to have_content('List Locations')
+  expect(page.text).to have_content(/Markets/)
 end
 
 Then(/^I should be redirected to my home page$/) do
-  expect(current_path).to match /\/locations/
+  expect(current_path).to match /\/setup/
   click_link("Logoff #{@username}")
   destroy_user(@username)
 end

@@ -9,6 +9,10 @@ module LoginHelpers
     fill_in('user_password', with: @password)
     click_on('Login')
   end
+
+  def logoff
+    visit('/setup/logout')
+  end
 end
 
 World LoginHelpers

@@ -14,7 +14,7 @@ module ValueHelpers
     when 'Report/Read_Only TPR Role'
       8
     when 'Store Manager'
-      4
+      3
     else
       raise ArgumentError, "Role '#{element}' is not defined. Please add a mapping in #{__FILE__}."
     end

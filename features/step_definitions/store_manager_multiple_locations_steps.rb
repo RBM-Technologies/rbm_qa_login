@@ -3,16 +3,18 @@ Given(/^I am a store manager with multiple locations$/) do
     'test_store_manager_multiple_loc',
     'test_store_manager_multiple_loc',
     'Store Manager',
-    '235',
-    'North Central',
-    'TPR Chicago Southeast'
+    '147437',
+    'Southeast',
+    'Gulf States',
+    'FL-Fort Walton Beach'
   )
   assign_location(
     @username,
     @password,
-    '225',
-    'North Central',
-    'TPR Chicago Southeast'
+    '147638',
+    'Southeast',
+    'Gulf States',
+    'FL-Fort Walton Beach'
   )
 end
 

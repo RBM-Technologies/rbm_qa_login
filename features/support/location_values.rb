@@ -1,6 +1,7 @@
 module LocationHelpers
   def value_for_location(element)
     case element
+      # T-mobile
     when 'North Central'
       153
     when 'Northwest'
@@ -23,6 +24,17 @@ module LocationHelpers
       3232
     when '225'
       3223
+      # att
+    when 'Southeast'
+      28344
+    when 'Gulf States'
+      28345
+    when 'FL-Fort Walton Beach'
+      33054
+    when '147437'
+      10021910
+    when '147638'
+      10022066
     else
       raise ArgumentError, "Location '#{element}' is not defined. Please add a mapping in #{__FILE__}."
     end

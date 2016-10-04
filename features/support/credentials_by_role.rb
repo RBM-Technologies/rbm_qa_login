@@ -5,8 +5,8 @@ module CredentialHelpers
   def role_credentials(role)
     case role
     when 'Administrator'
-      @username = 'client_admin'
-      @password = 'client_admin'
+      @username = 'client_admin_12345'
+      @password = 'test'
     when 'District Manager'
       @username = ''
       @password = ''
@@ -23,8 +23,8 @@ module CredentialHelpers
       @username = ''
       @password = ''
     when 'Store Manager'
-      @username = 'store_manager'
-      @password = 'store_manager'
+      @username = 'test_store_manager_12345'
+      @password = 'test'
     else
       raise ArgumentError, "Role '#{role}' is not defined. Please add a mapping in #{__FILE__}."
     end
