@@ -1,5 +1,6 @@
 Given(/^I have the credentials of (.+)$/) do |role|
-  role_credentials(role)
+  @current_user = credentials_by(role)
+  binding.pry
 end
 
 Given(/^I am on the login page$/) do
@@ -7,8 +8,8 @@ Given(/^I am on the login page$/) do
 end
 
 When(/^I enter my credentials$/) do
-  fill_in('user_login', with: @username)
-  fill_in('user_password', with: @password)
+  fill_in('user_login', with: @current_user.username)
+  fill_in('user_password', with: @current_user.password)
 end
 
 When(/^I submit the form$/) do

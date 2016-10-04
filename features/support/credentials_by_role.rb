@@ -1,4 +1,5 @@
 class User
+  attr_reader :username, :password, :role
   def initialize(username, password, role)
     @username = username
     @password = password
@@ -15,11 +16,10 @@ end
 @password = ''
 
 module CredentialHelpers
-  def role_credentials(role)
+  def credentials_by(role)
     case role
     when 'Administrator'
-      @username = 'client_admin_12345'
-      @password = 'test'
+      User.new('client_admin_12345', 'test', 'ATT admin')
     when 'District Manager'
       @username = ''
       @password = ''
