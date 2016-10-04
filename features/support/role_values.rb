@@ -13,10 +13,10 @@ module ValueHelpers
       5
     when 'Report/Read_Only TPR Role'
       8
-    when 'Store Manager'
+    when 'store_manager'
       3
     else
-      raise ArgumentError, "Role '#{element}' is not defined. Please add a mapping in #{__FILE__}."
+      raise ArgumentError, "Role '#{element}' is not OH SNAP. Please add a mapping in #{__FILE__}."
     end
   end
 end

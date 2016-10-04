@@ -1,8 +1,8 @@
 Given(/^I am a store manager with a single location$/) do
   create_user_with_single_location(
-    'test_store_manager_single_loc',
-    'test_store_manager_single_loc',
-    'Store Manager',
+    'test_sm_single_loc1',
+    'test',
+    'store_manager',
     '147437',
     'Southeast',
     'Gulf States',

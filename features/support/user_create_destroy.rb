@@ -27,18 +27,11 @@ module UserHelpers
     fill_in('user_password', with: password)
     fill_in('user_password_confirmation', with: password)
     find(:css, "#user_role_ids_[value='#{value_for(role)}']").set(true)
-    save_and_open_page
-
-    # find(:xpath, "//*span[text()[contains(., 'Southeast')]]").click
-    # find(:xpath, "//*[@id="regions"]/fieldset/ul/li/span[contains(text(), 'Southeast')]").click
-    # find(:xpath, "//*span[contains(text(), 'Southeast')]").click
     districts.each do |district|
-      find("span", text: "#{district}").click
-      save_and_open_page
+      sleep 5
+      find("#regions > fieldset li span", text: "#{district}").click
     end
-    # districts.each do |district|
-    #   find('#regions').find("span", text: "#{district}").click
-    # end
+    sleep 2
     find(:css, "#user_location_ids_[value='#{value_for_location(location)}']").set(true)
     click_on('Create')
     click_on("Logoff #{@username}")
@@ -57,8 +50,10 @@ module UserHelpers
     click_on('Search')
     click_on('Edit')
     districts.each do |district|
-      find(:xpath, "//*[text()[contains(., '#{district}')]]").click
+      sleep 3
+      find("#regions > fieldset li span", text: "#{district}").click
     end
+    sleep 2
     find(:css, "#user_location_ids_[value='#{value_for_location(location)}']").set(true)
     click_on('Save')
     click_on("Logoff #{@username}")

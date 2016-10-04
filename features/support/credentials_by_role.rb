@@ -1,3 +1,16 @@
+class User
+  def initialize(username, password, role)
+    @username = username
+    @password = password
+    @role = role
+  end
+end
+
+
+
+
+
+
 @username = ''
 @password = ''
 

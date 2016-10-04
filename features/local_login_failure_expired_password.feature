@@ -2,7 +2,7 @@ Feature: Login Failure due to Expired password
 
 Scenario:
   Given I am on the login page
-  And I am a user of role Store Manager with an expired password
+  And I am a user of role store_manager with an expired password
   And I enter my valid username
   And I enter an expired password
   And I submit the form
