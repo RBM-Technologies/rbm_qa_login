@@ -2,11 +2,10 @@
 @password = ''
 
 module LoginHelpers
-  def login_as (role)
-    role_credentials(role)
+  def login_as (user)
     visit('/view/login')
-    fill_in('user_login', with: @username)
-    fill_in('user_password', with: @password)
+    fill_in('user_login', with: user.username)
+    fill_in('user_password', with: user.password)
     click_on('Login')
   end
 

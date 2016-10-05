@@ -1,6 +1,6 @@
 Given(/^I am not logged in$/) do
   expect(page).to have_content('Login')
-  expect(page).to_not have_content("Logoff #{@username}")
+  expect(page).to_not have_content("Logoff #{@current_user.username}")
 end
 
 When(/^I try to visit a page on the website$/) do

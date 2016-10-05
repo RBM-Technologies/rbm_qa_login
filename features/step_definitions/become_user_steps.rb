@@ -1,15 +1,17 @@
-Given(/^I am logged in as an RBM Admin$/) do
-  login_as('RBM admin')
+Given(/^I am logged in as an RBM admin$/) do
+  @rbm_admin = credentials_for('RBM admin')
+  login_as(@rbm_admin)
+  expect(page).to have_content("Logoff #{@rbm_admin.username}")
 end
 
 When(/^I search the list of users for a specific username$/) do
-  role_credentials('Store Manager')
+  @store_manager = credentials_for('Store Manager')
   visit('/setup')
   click_on('Security')
   click_on('Users')
-  fill_in('query', with: @username)
+  fill_in('query', with: @store_manager.username)
   click_on('Search')
-  expect(page).to have_content(@username)
+  expect(page).to have_content(@store_manager.username)
 end
 
 When(/^I become that user$/) do
@@ -21,19 +23,18 @@ Then(/^I am redirected to that user's home page$/) do
 end
 
 Then(/^I should see their username on the page$/) do
-  expect(page).to have_content("Logoff #{@username}")
+  expect(page).to have_content("Logoff #{@store_manager.username}")
 end
 
 Then(/^I should be able to switch back to myself as user$/) do
-  role_credentials('RBM admin')
-  expect(page).to have_content("Switch back to #{@username}")
+  expect(page).to have_content("Switch back to #{@rbm_admin.username}")
 end
 
 When(/^I switch back to myself as user$/) do
-  click_link("Switch back to #{@username}")
+  click_link("Switch back to #{@rbm_admin.username}")
 end
 
 Then(/^I should be redirected back to my home page$/) do
-  expect(page).to have_content("Logoff #{@username}")
+  expect(page).to have_content("Logoff #{@rbm_admin.username}")
   expect(current_path).to match /\/admin$/
 end

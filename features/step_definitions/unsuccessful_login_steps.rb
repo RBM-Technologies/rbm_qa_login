@@ -1,5 +1,5 @@
 When(/^I enter my valid username$/) do
-  fill_in('user_login', with: @username)
+  fill_in('user_login', with: @current_user.username)
 end
 
 When(/^I enter an invalid password$/) do

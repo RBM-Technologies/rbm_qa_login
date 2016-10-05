@@ -1,5 +1,5 @@
 Given(/^I am a store manager with a single location$/) do
-  create_user_with_single_location(
+  @current_user = create_user_with_single_location(
     'test_sm_single_loc1',
     'test',
     'store_manager',
@@ -11,8 +11,8 @@ Given(/^I am a store manager with a single location$/) do
 end
 
 Then(/^I will go to the page for my single location$/) do
-  expect(page).to have_content(@location)
+  expect(page).to have_content(@current_user.location)
   expect(current_path).to match /\/locations/
-  click_link("Logoff #{@username}")
-  destroy_user(@username)
+  visit('/admin/logout')
+  destroy_user(@current_user)
 end

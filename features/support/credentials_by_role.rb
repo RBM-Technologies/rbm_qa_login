@@ -1,43 +1,22 @@
 class User
-  def initialize(username, password, role)
+  attr_reader :username, :password, :role, :location
+  def initialize(username, password, role, location)
     @username = username
     @password = password
     @role = role
+    @location = location
   end
 end
 
-
-
-
-
-
-@username = ''
-@password = ''
-
 module CredentialHelpers
-  def role_credentials(role)
+  def credentials_for(role)
     case role
     when 'Administrator'
-      @username = 'client_admin_12345'
-      @password = 'test'
-    when 'District Manager'
-      @username = ''
-      @password = ''
+      User.new('client_admin_12345', '99887766', 'ATT admin', '678')
     when 'RBM admin'
-      @username = 'rbm_admin'
-      @password = 'rbm_admin'
-    when 'Real Estate'
-      @username = ''
-      @password = ''
-    when 'Report/Read_Only'
-      @username = ''
-      @password = ''
-    when 'Report/Read_Only TPR Role'
-      @username = ''
-      @password = ''
+      User.new('rbm_admin', '3145', 'RBM admin', '678')
     when 'Store Manager'
-      @username = 'test_store_manager_12345'
-      @password = 'test'
+      User.new('test_store_manager_12345', 'test', 'store_manager', '678')
     else
       raise ArgumentError, "Role '#{role}' is not defined. Please add a mapping in #{__FILE__}."
     end

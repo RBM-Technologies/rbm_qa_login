@@ -1,7 +1,7 @@
 Feature:  Become a Different User from the User List View
 
 Scenario:
-  Given I am logged in as an RBM Admin
+  Given I am logged in as an RBM admin
   When I search the list of users for a specific username
   And I become that user
   Then I am redirected to that user's home page
