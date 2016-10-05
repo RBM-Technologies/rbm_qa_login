@@ -1,6 +1,5 @@
 Given(/^I have the credentials of (.+)$/) do |role|
-  @current_user = credentials_by(role)
-  binding.pry
+  @current_user = credentials_for(role)
 end
 
 Given(/^I am on the login page$/) do
@@ -18,5 +17,5 @@ end
 
 Then(/^the admin dashboard should appear$/) do
   expect(page).to have_content('Login successful')
-  expect(page).to have_content("Logoff #{@username}")
+  expect(page).to have_content("Logoff #{@current_user.username}")
 end

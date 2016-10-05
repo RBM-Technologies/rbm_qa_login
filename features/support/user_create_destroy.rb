@@ -1,28 +1,23 @@
 module UserHelpers
   def create_user_with_expired_password(role)
-    login_as('RBM admin')
-    visit('/setup')
-    click_on('Security')
-    click_on('Users')
-    click_on('New User')
+    @rbm_admin = credentials_for('RBM admin')
+    login_as(@rbm_admin)
+    visit('/setup/security/users/new')
     fill_in('user_login', with: 'expired_password_test_username')
     fill_in('user_password', with: 'expired_password_test_password')
     fill_in('user_password_confirmation', with: 'expired_password_test_password')
     find(:css, "#user_role_ids_[value='#{value_for(role)}']").set(true)
     click_link('Set to current date/time')
     click_on('Create')
-    click_on("Logoff #{@username}")
+    click_on("Logoff #{@rbm_admin.username}")
     page.driver.browser.accept_js_confirms
-    @username = 'expired_password_test_username'
-    @password = 'expired_password_test_password'
+    User.new('expired_password_test_username', 'expired_password_test_password', role, '678')
   end
 
   def create_user_with_single_location(username, password, role, location, *districts)
-    login_as('RBM admin')
-    visit('/setup')
-    click_on('Security')
-    click_on('Users')
-    click_on('New User')
+    @rbm_admin = credentials_for('RBM admin')
+    login_as(@rbm_admin)
+    visit('/setup/security/users/new')
     fill_in('user_login', with: username)
     fill_in('user_password', with: password)
     fill_in('user_password_confirmation', with: password)
@@ -34,18 +29,15 @@ module UserHelpers
     sleep 2
     find(:css, "#user_location_ids_[value='#{value_for_location(location)}']").set(true)
     click_on('Create')
-    click_on("Logoff #{@username}")
+    click_on("Logoff #{@rbm_admin.username}")
     page.driver.browser.accept_js_confirms
-    @username = username
-    @password = password
-    @location = location
+    User.new(username, password, role, location)
   end
 
   def assign_location(username, password, location, *districts)
-    login_as('RBM admin')
-    visit('/setup')
-    click_on('Security')
-    click_on('Users')
+    @rbm_admin = credentials_for('RBM admin')
+    login_as(@rbm_admin)
+    visit('/setup/security/users/list')
     fill_in('query', with: username)
     click_on('Search')
     click_on('Edit')
@@ -56,19 +48,16 @@ module UserHelpers
     sleep 2
     find(:css, "#user_location_ids_[value='#{value_for_location(location)}']").set(true)
     click_on('Save')
-    click_on("Logoff #{@username}")
+    click_on("Logoff #{@rbm_admin.username}")
     page.driver.browser.accept_js_confirms
-    @username = username
-    @password = password
     @location2 = location
   end
 
-  def destroy_user(username)
-    login_as('RBM admin')
-    visit('/setup')
-    click_on('Security')
-    click_on('Users')
-    fill_in('query', with: username)
+  def destroy_user(user)
+    @rbm_admin = credentials_for('RBM admin')
+    login_as(@rbm_admin)
+    visit('/setup/security/users/list')
+    fill_in('query', with: user.username)
     click_on('Search')
     click_on('Delete')
   end
