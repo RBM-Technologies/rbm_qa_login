@@ -9,7 +9,8 @@ Scenario:
   And I submit the form
   Then Login should not succeed
   And I should be taken to an update password page
-  When I enter a new password
+  When I acknowledge the announcements
+  And I enter a new password
   And I submit the reset password form
   Then login should succeed
   And I should be redirected to my home page
