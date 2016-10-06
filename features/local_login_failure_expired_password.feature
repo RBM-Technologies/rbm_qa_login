@@ -1,5 +1,6 @@
 Feature: Login Failure due to Expired password
 
+@javascript
 Scenario:
   Given I am on the login page
   And I am a user of role store_manager with an expired password

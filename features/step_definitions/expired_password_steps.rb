@@ -15,8 +15,11 @@ Then(/^I should be taken to an update password page$/) do
 end
 
 When(/^I enter a new password$/) do
-  sleep 5
-  click_on('Acknowledge')
+    within_frame('announcements-app') do
+      while has_content?('Acknowledge') do
+        find('button', text: 'Acknowledge').click
+      end
+    end
   fill_in('password', with: 'updated_test_password')
   fill_in('password_confirmation', with: 'updated_test_password')
 end
