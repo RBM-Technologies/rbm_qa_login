@@ -14,12 +14,15 @@ Then(/^I should be taken to an update password page$/) do
   expect(current_path).to match /\/require_password_reset/
 end
 
-When(/^I enter a new password$/) do
-    within_frame('announcements-app') do
-      while has_content?('Acknowledge') do
-        find('button', text: 'Acknowledge').click
-      end
+When(/^I acknowledge the announcements$/) do
+  within_frame('announcements-app') do
+    while has_content?('Acknowledge') do
+      find('button', text: 'Acknowledge').click
     end
+  end
+end
+
+When(/^I enter a new password$/) do
   fill_in('password', with: 'updated_test_password')
   fill_in('password_confirmation', with: 'updated_test_password')
 end
