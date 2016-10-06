@@ -15,9 +15,9 @@ Then(/^I should be taken to an update password page$/) do
 end
 
 When(/^I acknowledge the announcements$/) do
-  within_frame('announcements-app') do
-    while has_content?('Acknowledge') do
-      find('button', text: 'Acknowledge').click
+  within_frame 'announcements-app' do
+    while button = begin find('button', text: 'Acknowledge') rescue nil end
+      button.click
     end
   end
 end
