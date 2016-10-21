@@ -13,11 +13,11 @@ module CredentialHelpers
   def credentials_for(role)
     case role
     when 'Administrator'
-      User.new('client_admin_12345', '99887766', 'ATT admin', '678')
+      User.new()
     when 'RBM admin'
-      User.new('rbm_admin', '3145', 'RBM admin', '678')
+      User.new()
     when 'Store Manager'
-      User.new('test_store_manager_12345', 'test', 'store_manager', '678')
+      User.new()
     else
       raise ArgumentError, "Role '#{role}' is not defined. Please add a mapping in #{__FILE__}."
     end
